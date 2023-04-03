@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+
+  .Teko{
+    font-family: 'Teko', cursive;
+}
+.Shantel{
+  font-family: 'Shantell_Sans', cursive;
+  src: url(assets/fonts/shantel.ttf);
+}
+.Pacifico{
+  font-family: 'Pacifico', cursive;
+}
+.FredokaOne-Regular{
+    font-family: 'Fredo',cursive;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col col -3">
+  <div class="sidebar">
+    <h1>Admin Dashboard</h1><br>
+    <ul>
+      <li><a (click)="navaddemployees()">Add Employee</a></li>
+      <li><a (click)="navviewemployees()">View Employees</a></li>
+      <li><a (click)="navaddteam()">Add Team</a></li>
+      
+    </ul>
+  </div>
+</div>
+<div class="col col-9">
+  <div class="main">
+    <h2></h2>
+    <br>
+    <div id="1" class="card">
+      <h3>Add Employee</h3>
+      <form #addForm="ngForm" (ngSubmit)="addEmployee(addForm)" >
+        <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="firstname"  size="30" required placeholder="Firstname" [(ngModel)]="employee.firstname"><br>
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="lastname"  size="30" required placeholder="Lastname" [(ngModel)]="employee.lastname" /><br>
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="jobTitle"  size="30" required placeholder="Jobtitle"[(ngModel)]="employee.jobTitle"  /><br>
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="phone"  size="30" required placeholder="phone"[(ngModel)]="employee.phone"  /><br>
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="imageUrl"  size="30" required placeholder="ImageUrl" [(ngModel)]="employee.imageUrl" /><br>
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="password" name="password"  required size="30" placeholder="Password" [(ngModel)]="employee.password"/><br>
+     <input class="btn btn-success form-control-lg " style="border-radius: 20px;" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+   </form>
+    </div>
+    
+    <div id="2" class="card">
+      <h3>Employees</h3>
+      <div class="main-box clearfix">
+        <div class="table-responsive">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span>Employee</span></th>
+                <th><span>Job title</span></th>
+                <th class="text-center"><span>Phone</span></th>
+                <th><span>manage</span></th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let e of employees">
+                <td >
+                  <img src={{e.imageUrl}} alt="">
+                  <a href="#" class="user-link">{{e.firstname}}&nbsp;{{e.lastname}}</a>
+                  <span class="user-subhead"></span>
+                </td>
+                <td>
+                  {{e.jobTitle}}
+                </td>
+                <td class="text-center">
+                  <span class="label label-default">{{e.phone}}</span>
+                </td>
+                <td>
+                  <a (click)="deleteEmployeeById(e.id)"><img src="assets/images/delete.png" style="height: 20px;width: 20px;" alt=""></a>&nbsp;&nbsp;
+                  <a ><img src="assets/images/add.png" style="height: 20px;width: 20px;" alt=""></a>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+    <div id="3" class="card">
+      <h3>Add Team</h3>
+      <form #addForm1="ngForm" (ngSubmit)="addTeam(addForm1)" >
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="name"  size="30" required placeholder="name"[(ngModel)]="team.name"  /><br>
+       <input class="form-control form-control-lg" style="border-radius: 15px;" type="text" name="department"  size="30" required placeholder="department" [(ngModel)]="team.department" /><br>
+
+       <label style="font-size: 22px;">
+         Manager :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <span class="custom-dropdown custom-dropdown--white">
+             <select style="width: 600px;height: 40px;"  name="manager" class="custom-dropdown__select custom-dropdown__select--white" [(ngModel)]="team.manager">
+               <option  *ngFor="let option of employees" [value]="option.firstname+' ' + option.lastname">{{option.firstname+" " + option.lastname }}</option>
+             </select>
+         </span>
+     </label><br><br>
+     <input class="btn btn-success form-control-lg " style="border-radius: 20px;" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add team&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+   </form>
+
+    </div>
+    <div id="4" class="card">
+      <h3>Teams</h3><br>
+      <table class="table user-list">
+        <thead>
+      <tr>
+        <th><span>name</span></th>
+        <th><span>department</span></th>
+        <th><span>manager</span></th>
+        <th><span>manage</span></th>
+      </tr>
+        </thead>
+        <tbody>
+      <tr  *ngFor="let t of teams">
+       
+        <td>
+          {{t.name}}
+        </td>
+        <td>{{t.department}}</td>
+        <td>{{t.manager}}</td>
+        <td><a (click)="deleteTeamById(t.id)"><img src="assets/images/delete.png" style="height: 20px;width: 20px;" alt=""></a>&nbsp;&nbsp;
+          <a title="add members" (click)="setTeamId(t.id)" onclick="dialog.showModal()"><img src="assets/images/add.png" style="height: 20px;width: 20px;" alt=""></a>
+          
+
+        </td>
+        
+      </tr>
+    </tbody>
+      </table>
+    </div>
+    </div>
+    <dialog class="ct" id="dialog">
+      <form method="dialog">
+        <h3>Add members</h3>        <br>
+        <label style="font-size: 22px;">
+
+          <!--<p *ngFor="let e of employees">{{e.firstname}}&nbsp;{{e.lastname}}<button class="bt" (click)="AddEmployeeToTeam(teamid,e)">add</button></p>-->
+          <table>
+            <tr *ngFor="let e of employees;let i=index">
+              <td>{{e.firstname}}&nbsp;{{e.lastname}}</td>
+              <td><button class="bt" (click)="AddEmployeeToTeam(teamid,e);b(i)">add</button></td>
+              <td *ngIf="tab[i]" style="color: green;font-size: 20px;">added Member</td>
+            </tr>
+          </table>
+      </label><br><br>
+      <input (click)="a()" class="btn btn-success form-control-lg " style="border-radius: 15px;" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+        
+      </form>
+    </dialog>
+  </div>
+</div>
+</div>
+
+
+
+
+</body>
+</html>
+

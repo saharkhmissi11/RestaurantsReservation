@@ -1,0 +1,89 @@
+body{
+	background-color: #6bb16d;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+  background-size: cover;
+  height: 630px;
+}
+.login {
+	width: 500px;
+	margin: 0 auto;
+	background: #ffffff;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+}
+
+.login h1 {
+	text-align: center;
+	font-size: 36px;
+	color: #333333;
+	margin-top: 0;
+}
+
+.login input[type="text"], .login input[type="password"] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.login input[type="submit"] {
+	background-color: #4CAF50;
+	color: #ffffff;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+.login label {
+	font-size: 24px;
+	float: left;
+	margin-right: 10px;
+}
+
+.login i {
+	padding: 10px;
+	background-color: #4CAF50;
+	color: #ffffff;
+	border-radius: 50%;
+}
+
+.login input[type="text"]:focus, .login input[type="password"]:focus {
+	border: 2px solid #4CAF50;
+}
+ /* Header styles */
+ header {
+	 height: 80px;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  nav a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: 700;
+  }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat App Template</title>
+  </head>
+  <body>
+    <br>
+    <header>
+      <img src="assets/images/applogo.png" style="height: 40px;width: 60px;" alt="">
+      <h1>Team Chat</h1>
+      <nav>
+        <ul>
+          <li><a href="#">{{employee.firstname}}&nbsp;{{employee.lastname}}</a></li>
+          <li><a href="#">Chat Rooms</a></li>
+          <li><a href="#">Users</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+      <br>
+    <div class="chat-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col col-3">
+            <div class="left-panel">
+              <div class="user-list-container">
+                <h2 class="user-list-header">User List</h2>
+                <ul class="user-list" *ngFor="let t of teammates">
+                  <li class="user">{{t.firstname}}&nbsp;{{t.lastname}}</li>
+                  
+                </ul>
+              </div>
+              <br>
+              <div class="user-list-container">
+                <h2 class="user-list-header">User List</h2>
+                <ul class="user-list">
+                  <li class="user">Settings</li>
+                  <li class="user">Help</li>
+                  <li class="user">Contact us</li>
+                </ul>
+              </div>
+
+          </div>
+        </div>
+        <div class="col col-2"></div>
+        <div class="col col-7">
+          <div class="right-panel">
+            
+            <div class="chat-box" id="chat-box">
+              <div class="message received" *ngFor="let m of messages">
+                <p>{{m.content}}</p>
+              </div>
+              <div class="message sent">
+                <p>Hi!</p>
+              </div>
+            </div>
+            <form id="message-form" #addForm="ngForm" (ngSubmit)="sendMessage(addForm)">
+              <input type="text" id="message" name="message" placeholder="Type your message..." [(ngModel)]="message.content">
+              <button type="submit">Send</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+      
+      </div>
+      
+    </div>
+    <footer>
+      <br>
+       <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&copy; 2023 Team Chat Application. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
